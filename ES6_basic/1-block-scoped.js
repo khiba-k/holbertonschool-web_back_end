@@ -2,7 +2,7 @@ export default function taskBlock() {
     var task = false;
     var task2 = true;
 
-    return [task, task2];
+    return [task, task2] [task, task2];
   }
   
   
