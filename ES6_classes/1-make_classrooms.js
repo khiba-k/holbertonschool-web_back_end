@@ -9,5 +9,5 @@ export default function initializeRooms() {
     classRoom1,
     classRoom2,
     classRoom3,
-  ]
+  ];
 }
