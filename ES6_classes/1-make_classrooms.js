@@ -5,9 +5,9 @@ export default function initializeRooms() {
   const classRoom2 = new ClassRoom(20);
   const classRoom3 = new ClassRoom(34);
 
-  const classRooms = [`ClassRoom { _maxStudentSize: ${classRoom1._maxStudentsSize}}`,
-    `ClassRoom { _maxStudentSize: ${classRoom2._maxStudentsSize}}`,
-    `ClassRoom { _maxStudentSize: ${classRoom3._maxStudentsSize}}`,
-  ];
-  return classRooms;
+  return [
+    classRoom1,
+    classRoom2,
+    classRoom3,
+  ]
 }
