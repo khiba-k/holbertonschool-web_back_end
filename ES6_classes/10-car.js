@@ -6,12 +6,11 @@ export default class Car {
   }
 
   cloneCar() {
-    const carInstance = {
-      carBrand: this._brand,
-      carMotor: this._motor,
-      carColor: this._color,
-    };
-
-    return carInstance;
+    const origin = this;
+    return Object.assign(Object.create(Object.getPrototypeOf(origin)), {
+      _brand: undefined,
+      _motor: undefined,
+      _color: undefined,
+    });
   }
 }
