@@ -23,12 +23,20 @@ export default class Pricing {
   }
 
   displayFullPrice() {
-    return `${this.amount} ${this.currency.displayFullCurrency()}`;
+    const code = this.currency._code;
+    const name = this.currency._name;
+    return `${this.amount} ${name} (${code})`;
   }
 
-  static convertPrice(amount, conversionRate) {
-    const convert = amount * conversionRate;
+  static convertPrice(amount = 0, conversionRate = 0) {
+    if (typeof amount !== 'number') {
+      throw new TypeError('amount must be a number');
+    }
 
-    return convert;
+    if (typeof conversionRate !== 'number') {
+      throw new TypeError('conversionRate must be a number');
+    }
+
+    return (amount * conversionRate);
   }
 }
