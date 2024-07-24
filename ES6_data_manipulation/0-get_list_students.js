@@ -1,18 +1,18 @@
 export default function getListStudents() {
   const myArr = [
     {
-      id: '1',
       firstName: 'Guillame',
+      id: '1',
       location: 'San Francisco',
     },
     {
-      id: '2',
       firstName: 'James',
+      id: '2',
       location: 'Columbia',
     },
     {
-      id: '3',
       firstName: 'Serena',
+      id: '3',
       location: 'San Francisco',
     },
   ];
