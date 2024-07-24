@@ -1,5 +1,5 @@
 export default function getListStudentIds(arr) {
-  let boolean = Array.isArray(arr);
+  const boolean = Array.isArray(arr);
 
   if (!boolean) {
     return [];
