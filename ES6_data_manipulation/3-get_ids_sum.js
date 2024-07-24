@@ -1,7 +1,12 @@
+import getListStudentIds from "./1-get_list_student_ids";
+
 export default function getStudentIdsSum(getListStudents) {
-  function addIds(obj1, objectOthers) {
-    return obj1.id + objectOthers.id;
+  
+  let studentIds = getListStudentIds(getListStudent);
+
+  function addIds(id1, idOthers) {
+    return id1 + idOthers;
   }
 
-  return getListStudents.reduce(addIds);
+  return studentIds.reduce(addIds);
 }
