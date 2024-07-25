@@ -7,7 +7,8 @@ export default function updateStudentGradeByCity(getListStudents, city, newGrade
   const trueCity = getListStudents.filter(filterByCity);
 
   function addGrades(obj) {
-    return { ...obj, grade: newGrades[student.id] || 'N/A' };
+    const gradeObj = newGrades.find((grade) => grade.studentId === obj.id);
+    return { ...obj, grade: gradeObj ? gradeObj.grade : 'N/A' };
   }
 
   return trueCity.map(addGrades);
