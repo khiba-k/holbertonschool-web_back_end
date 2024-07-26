@@ -1,4 +1,4 @@
-import { uploadPhoto, createUser } from "./ES6_promise/utils";
+import { uploadPhoto, createUser } from "./utils";
 
 export default function handleProfileSignup() {
     let myPromise = Promise.all([uploadPhoto(), createUser()]).then(
