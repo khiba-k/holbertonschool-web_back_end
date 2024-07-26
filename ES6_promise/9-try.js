@@ -3,7 +3,8 @@ export default function guardrail(mathFunction) {
     const queue = [mathFunction(), 'Guardrail was processed'];
     return queue;
   } catch (e) {
-    const queue = [e.message, 'Guardrail was processed'];
+    const msg = `Error: ${e.message}`;
+    const queue = [msg, 'Guardrail was processed'];
     return queue;
   }
 }
