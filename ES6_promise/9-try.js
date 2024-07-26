@@ -4,8 +4,7 @@ export default function guardrail(mathFunction) {
     const queue = [myReturn, 'Guarderail was processed'];
     return queue;
   } catch (e) {
-    const myReturn = mathFunction;
-    const queue = [myReturn, 'Guardrail was processed'];
+    const queue = [e, 'Guardrail was processed'];
     return queue;
   }
 }
