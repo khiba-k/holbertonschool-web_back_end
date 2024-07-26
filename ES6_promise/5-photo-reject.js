@@ -3,5 +3,5 @@ export default function uploadPhoto(filename) {
     reject(filename);
   });
 
-  return myPromise.catch((file) => `Error: ${file} cannot be processed`);
+  return myPromise.catch((file) => Error(`${file} cannot be processed`));
 }
