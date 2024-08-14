@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
-    Module has function that returns sum of two floats        
+    Module has function that returns sum of two floats
 """
+
+
 def add(a: float, b: float) -> float:
     """Function returns sum of two floats
 
