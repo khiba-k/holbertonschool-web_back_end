@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+    Module has function that returns sum of two floats        
+"""
 def add(a: float, b: float) -> float:
     """Function returns sum of two floats
 
