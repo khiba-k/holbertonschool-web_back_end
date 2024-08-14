@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Module contains function that return list
 """
-from typing import List, Tuple, Sequence
+from typing import List, Tuple, Sequence, Iterable
 
 
-def element_length(lst: list) -> List[Tuple[Sequence[int]]]:
+def element_length(lst: Iterable[Sequence]) -> List[Tuple[Sequence[int]]]:
     """Function returns list
 
     Args:
