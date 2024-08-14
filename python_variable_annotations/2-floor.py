@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
-import math
 """Module contains function that returns float as floor
+
+Imports:
+    Math: Contains .floor function
 """
+import math
 
 
 def floor(n: float) -> int:
