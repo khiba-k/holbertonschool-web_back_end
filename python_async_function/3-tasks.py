@@ -7,7 +7,6 @@ Imports:
     typing: code contains type annotations
 """
 import asyncio
-import typing
 random_wait = __import__('0-basic_async_syntax').wait_random
 
 
