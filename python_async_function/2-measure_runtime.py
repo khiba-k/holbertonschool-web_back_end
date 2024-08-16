@@ -6,6 +6,7 @@ Imports:
     time: time module for getting time elapsed
 """
 import time
+import asyncio
 n_wait = __import__('1-concurrent_coroutines').wait_n
 
 
@@ -20,7 +21,7 @@ async def measure_time(n: int, max_delay: int) -> float:
         float: return time
     """
     start = time.time()
-    await n_wait(n, max_delay)
+    asyncio.run(n_wait(n, max_delay))
     end = time.time()
 
     elapsed = (end - start) / n
