@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 """Module contains function that delays n seconds and then returns n
+
+Imports:
+    random: Contains the .uniform method
+    asyncio: Contains the sleep method
 """
 import random
 import asyncio
 
 
-async def wait_random(max_delay=10):
+async def wait_random(max_delay: int = 10) -> float:
     """Function delays for random num seconds
 
     Args:
