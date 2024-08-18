@@ -10,7 +10,7 @@ import asyncio
 n_wait = __import__('1-concurrent_coroutines').wait_n
 
 
-async def measure_time(n: int, max_delay: int) -> float:
+def measure_time(n: int, max_delay: int) -> float:
     """Function meausres async function runtime
 
     Args:
