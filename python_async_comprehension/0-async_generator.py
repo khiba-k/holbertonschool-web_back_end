@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 """Module contains function async generator
+
+Imports:
+    asyncio: asyncio module
+    random: random module
 """
 import asyncio
 import random
