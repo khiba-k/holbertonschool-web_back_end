@@ -47,6 +47,7 @@ class Server:
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """Gets specific data
         """
+        assert page > -1
         assert page > 0 and isinstance(page, int)
         assert page_size > 0 and isinstance(page_size, int)
         myRange = index_range(page, page_size)
