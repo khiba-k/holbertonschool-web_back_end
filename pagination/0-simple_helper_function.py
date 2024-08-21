@@ -6,7 +6,7 @@ Imports:
 from typing import Tuple
 
 
-def index_range(page: int, page_size: int):
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """Function returns pagination range
 
     Args:
