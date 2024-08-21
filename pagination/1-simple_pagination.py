@@ -47,14 +47,15 @@ class Server:
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """Gets specific data
         """
-        assert page > 0 and isinstance(page, int)
-        assert page_size > 0 and isinstance(page_size, int)
+        assert page > 0
+        assert page_size > 0
+        assert isinstance(page, int)
+        assert isinstance(page_size, int)
         myRange = index_range(page, page_size)
-        start: int = myRange[0]
-        end: int = myRange[1]
-        filtered_list: list = self.dataset()
+        start = myRange[0]
+        end = myRange[1]
+        filtered_list = self.dataset()
 
         if start >= len(filtered_list):
             return []
         return filtered_list[start:end]
-
