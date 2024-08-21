@@ -57,4 +57,6 @@ class Server:
         if start >= len(filtered_list[start:end]):
             return []
         return filtered_list[start:end]
-
+    
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
+        
