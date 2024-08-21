@@ -8,6 +8,7 @@ Imports:
 import csv
 from typing import List, Tuple
 
+
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """Function returns pagination range
 
@@ -22,6 +23,7 @@ def index_range(page: int, page_size: int) -> Tuple[int, int]:
     end = start + page_size
 
     return ((start, end))
+
 
 class Server:
     """Server class to paginate a database of popular baby names.
@@ -45,10 +47,8 @@ class Server:
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """Gets specific data
         """
-        assert page > 0
-        assert page_size > 0
-        assert isinstance(page, int)
-        assert isinstance(page_size, int)
+        assert page > 0 and isinstance(page, int)
+        assert page_size > 0 and isinstance(page_size, int)
         myRange = index_range(page, page_size)
         start = myRange[0]
         end = myRange[1]
@@ -57,5 +57,3 @@ class Server:
         if start >= len(filtered_list):
             return []
         return filtered_list[start:end]
-
-
