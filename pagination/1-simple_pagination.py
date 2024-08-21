@@ -54,7 +54,7 @@ class Server:
         end: int = myRange[1]
         filtered_list: list = self.dataset()
 
-        if start >= len(filtered_list[start:end]):
+        if start >= len(filtered_list):
             return []
         return filtered_list[start:end]
 
