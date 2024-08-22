@@ -22,7 +22,7 @@ class Server:
             with open(self.DATA_FILE) as f:
                 reader = csv.reader(f)
                 dataset = [row for row in reader]
-            self.__dataset = dataset[1:]  # Skip the header row
+            self.__dataset = dataset[1:]
         return self.__dataset
 
     def indexed_dataset(self) -> Dict[int, List]:
@@ -42,14 +42,10 @@ class Server:
         """
         assert isinstance(index, int) and index >= 0
         assert isinstance(page_size, int) and page_size > 0
-
-        # Get the indexed dataset
         indexed_data = self.indexed_dataset()
         data_length = len(indexed_data)
 
-        assert index < data_length  # Ensure the index is within bounds
-
-        # Collect data for the current page
+        assert index < data_length 
         data = []
         current_index = index
         while len(data) < page_size and current_index < data_length:
@@ -57,7 +53,6 @@ class Server:
                 data.append(indexed_data[current_index])
             current_index += 1
 
-        # Calculate the next index
         next_index = current_index if current_index < data_length else None
 
         return {
