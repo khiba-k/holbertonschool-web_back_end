@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Module contains function that returns pagination range
 Imports:
-    Tuple: Tuple type annotation
+    Typing: Tuple type annotation
 """
 from typing import Tuple
 
