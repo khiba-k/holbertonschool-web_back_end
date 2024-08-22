@@ -3,10 +3,14 @@
 Imports:
     Tuple: Tuple type annotation
     List: List type anotaton
+    Dict: Dict type annotation
     csv: csv module
 """
 import csv
-from typing import List, Tuple
+from typing import List
+from typing import Tuple
+from typing import Dict
+import math
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
@@ -47,16 +51,42 @@ class Server:
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """Gets specific data
         """
-        assert page > 0 and isinstance(page, int)
-        assert page_size > 0 and isinstance(page_size, int)
+        assert page > 0
+        assert page_size > 0
+        assert isinstance(page, int)
+        assert isinstance(page_size, int)
         myRange = index_range(page, page_size)
-        start: int = myRange[0]
-        end: int = myRange[1]
-        filtered_list: list = self.dataset()
+        start = myRange[0]
+        end = myRange[1]
+        csv_list = self.dataset()
 
-        if start >= len(filtered_list[start:end]):
+        if start >= len(csv_list):
             return []
-        return filtered_list[start:end]
-    
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
-        
+        return csv_list[start:end]
+
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
+        """Returns a dictionary containing hypermedia pagination information.
+        """
+        assert page > 0
+        assert page_size > 0
+        assert isinstance(page, int)
+        assert isinstance(page_size, int)
+
+        csv_list = self.dataset()
+        total_items = len(csv_list)
+        total_pages = math.ceil(total_items / page_size)
+
+        start, end = self.index_range(page, page_size)
+        data = csv_list[start:end]
+
+        next_page = page + 1 if page < total_pages else None
+        prev_page = page - 1 if page > 1 else None
+
+        return {
+            "page_size": len(data),
+            "page": page,
+            "data": data,
+            "next_page": next_page,
+            "prev_page": prev_page,
+            "total_pages": total_pages
+        }
