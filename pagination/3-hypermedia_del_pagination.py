@@ -45,7 +45,7 @@ class Server:
         indexed_data = self.indexed_dataset()
         data_length = len(indexed_data)
 
-        assert index < data_length 
+        assert index < data_length
         data = []
         current_index = index
         while len(data) < page_size and current_index < data_length:
