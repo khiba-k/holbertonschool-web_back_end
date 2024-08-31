@@ -4,10 +4,12 @@ Change school topics
 """
 
 
-def update_topics(mongo_collection, name, topics):
-    """
-    function that changes all topics of a school
-    document based on the name
-    """
-    return mongo_collection.update_many({"name": name},
-                                        {"$set": {"topics": topics}})
+def schools_by_topic(mongo_collection, topic):
+    '''
+    Prototype: def schools_by_topic(mongo_collection, topic):
+    mongo_collection will be the pymongo collection object
+    topic (string) will be topic searched
+    '''
+    return [collection for collection in mongo_collection.find(
+        {"topics": topic}
+        )]
