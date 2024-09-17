@@ -1,22 +1,22 @@
-const express = require("express");
-const fs = require("fs").promises;
-const parse = require("csv-parse");
+const express = require('express');
+const fs = require('fs').promises;
+const parse = require('csv-parse');
 
 const app = express();
 
 app.listen(1245, () => {
-  console.log("Server is running at http://localhost:1245");
+  console.log('Server is running at http://localhost:1245');
 });
 
-app.get("/", (req, res) => {
-  res.status(200).send("Hello Holberton School!");
+app.get('/', (req, res) => {
+  res.status(200).send('Hello Holberton School!');
 });
 
-app.get("/students", async (req, res) => {
-  const dbPath = "path-to-database.csv";
+app.get('/students', async (req, res) => {
+  const dbPath = 'path-to-database.csv';
 
   try {
-    const fileContent = await fs.readFile(dbPath, "utf-8");
+    const fileContent = await fs.readFile(dbPath, 'utf-8');
 
     const records = await new Promise((resolve, reject) => {
       parse(
@@ -31,7 +31,7 @@ app.get("/students", async (req, res) => {
           } else {
             resolve(data);
           }
-        }
+        },
       );
     });
 
@@ -54,12 +54,12 @@ app.get("/students", async (req, res) => {
     for (const [field, names] of fieldMap.entries()) {
       response += `Number of students in ${field}: ${
         names.length
-      }. List: ${names.join(", ")}\n`;
+      }. List: ${names.join(', ')}\n`;
     }
 
     res.status(200).send(response);
   } catch (error) {
-    res.status(500).send("Cannot load the database");
+    res.status(500).send('Cannot load the database');
   }
 });
 
