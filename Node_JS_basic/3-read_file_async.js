@@ -1,53 +1,51 @@
-const fs = require('fs').promises;
-const parse = require('csv-parse');
+const fs = require('fs');
 
-async function countStudents(path) {
-  try {
-    const fileContent = await fs.readFile(path, 'utf-8');
+function countStudents(path) {
+  return new Promise((resolve, reject) => {
+    fs.readFile(path,
+      { encoding: 'utf8', flag: 'r' },
+      (err, data) => {
+        if (err) {
+          reject(Error('Cannot load the database'));
+          return;
+        }
+        const response = [];
+        let msg;
 
-    const records = await new Promise((resolve, reject) => {
-      parse(
-        fileContent,
-        {
-          columns: true,
-          skip_empty_lines: true,
-        },
-        (err, data) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(data);
+        const content = data.split('\n');
+
+        let students = content.filter((item) => item);
+
+        students = students.map((item) => item.split(','));
+
+        const studentSize = students.length ? students.length - 1 : 0;
+        msg = `Number of students: ${studentSize}`;
+        console.log(msg);
+
+        response.push(msg);
+
+        const fields = {};
+        for (const i in students) {
+          if (i !== 0) {
+            if (!fields[students[i][3]]) fields[students[i][3]] = [];
+
+            fields[students[i][3]].push(students[i][0]);
           }
-        },
-      );
-    });
+        }
 
-    const fieldMap = new Map();
+        delete fields.field;
 
-    for (const record of records) {
-      const { field } = record;
-      const { firstName } = record;
+        for (const key of Object.keys(fields)) {
+          msg = `Number of students in ${key}: ${fields[key].length
+          }. List: ${fields[key].join(', ')}`;
 
-      if (!fieldMap.has(field)) {
-        fieldMap.set(field, []);
-      }
+          console.log(msg);
 
-      fieldMap.get(field).push(firstName);
-    }
-
-    console.log(`Number of students: ${records.length}`);
-
-    for (const [field, names] of fieldMap.entries()) {
-      console.log(
-        `Number of students in ${field}: ${names.length}. List: ${names.join(
-          ', ',
-        )}`,
-      );
-    }
-  } catch (error) {
-    console.error('Cannot load the database');
-    throw error;
-  }
+          response.push(msg);
+        }
+        resolve(response);
+      });
+  });
 }
 
 module.exports = countStudents;
