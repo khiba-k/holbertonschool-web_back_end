@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
+""" BasicCache module """
 from base_caching import BaseCaching
+
 
 class BasicCache(BaseCaching):
     """Basic caching system that inherits from BaseCaching."""
@@ -15,9 +17,7 @@ class BasicCache(BaseCaching):
             key (str): The key for the item.
             item (any): The item to be stored.
         """
-        if key is None or item is None:
-            pass
-        else:
+        if key is not None or item is not None:
             self.cache_data[key] = item
 
     def get(self, key):
