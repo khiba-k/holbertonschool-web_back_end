@@ -12,22 +12,12 @@ class BasicCache(BaseCaching):
 
     def put(self, key, item):
         """Stores an item in the cache.
-
-        Args:
-            key (str): The key for the item.
-            item (any): The item to be stored.
         """
         if key is not None and item is not None:
             self.cache_data[key] = item
 
     def get(self, key):
         """Retrieves an item from the cache.
-
-        Args:
-            key (str): The key of the item to retrieve.
-
-        Returns:
-            str or None: The item with the key, or None if not found.
         """
         
         if key is None:
