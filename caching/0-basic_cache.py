@@ -4,6 +4,9 @@ from base_caching import BaseCaching
 class BasicCache(BaseCaching):
     """Basic caching system that inherits from BaseCaching."""
 
+    def __init__(self):
+        """Initialize the BasicCache."""
+        super().__init__()
 
     def put(self, key, item):
         """Stores an item in the cache.
