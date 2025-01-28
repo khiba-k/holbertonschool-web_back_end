@@ -29,9 +29,8 @@ class BasicCache(BaseCaching):
         Returns:
             str or None: The item with the key, or None if not found.
         """
-        self.item = self.cache_data.get(key)
         
         if key is None:
             return None
         else:
-            return f"{self.item}"
+            return self.cache_data.get(key)
