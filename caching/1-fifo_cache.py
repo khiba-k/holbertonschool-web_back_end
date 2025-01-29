@@ -5,7 +5,10 @@ BaseCaching = __import__('base_caching').BaseCaching
     
 
 class FIFOCache(BaseCaching):
-    """FIFO caching system that inherits from BaseCaching."""
+    """FIFO caching system that inherits from BaseCaching.
+    Implements(FIFO) cache replacement policy.
+    The least recent entry is discarded.
+    """
 
     def __init__(self):
         """Initialize the FIFO cache."""
