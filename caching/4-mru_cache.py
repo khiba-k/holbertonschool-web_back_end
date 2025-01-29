@@ -6,8 +6,8 @@ BaseCaching = __import__('base_caching').BaseCaching
 
 class MRUCache(BaseCaching):
     """MRU caching system that inherits from BaseCaching.
-    Implements a Most Recently Used (MRU) cache replacement policy.
-    When the cache reaches its limit, the most recently used entry is discarded.
+    Implements (MRU) cache replacement policy.
+    Most recently used entry is discarded.
     """
 
     def __init__(self):
@@ -21,7 +21,7 @@ class MRUCache(BaseCaching):
 
     def put(self, key, item):
         """Add an item to the cache.
-        If the cache exceeds the maximum size, the least recently used item is removed.
+        The least recently used item is removed.
         """
         if key is not None and item is not None:
             if len(self.cache_data) >= self.MAX_ITEMS:
@@ -31,8 +31,8 @@ class MRUCache(BaseCaching):
             self.cache_data[key] = item
 
     def get(self, key):
-        """Retrieve an item from the cache and mark it as recently used.
-        Moves the accessed item to the end to indicate recent use.
+        """Retrieve an item from the cache.
+        Moves the accessed item to the end.
         """
         if key is None or key not in self.cache_data:
             return None
