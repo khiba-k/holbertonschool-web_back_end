@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
+"""FIFO Caching Code
+"""
 from base_caching import BaseCaching
-    """FIFO Caching Code
-    """
+    
 
 class FIFOCache(BaseCaching):
     """FIFO caching system that inherits from BaseCaching.
