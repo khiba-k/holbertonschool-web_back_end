@@ -1,13 +1,22 @@
 #!/usr/bin/env python3
-""" BasicCache module """
+"""
+BasicCache module
+"""
 from base_caching import BaseCaching
 
 
 class BasicCache(BaseCaching):
-    """Basic caching system that inherits from BaseCaching."""
+    """
+    BasicCache class represents a simple caching
+    __init__(): Initializes the BasicCache object.
+    put: Adds an item to the cache.
+    get: Retrieves an item from the cache based on the key.
+    """
 
     def __init__(self):
-        """Initialize the BasicCache."""
+        """
+        Initialize the BasicCache.
+        """
         super().__init__()
 
     def put(self, key, item):
