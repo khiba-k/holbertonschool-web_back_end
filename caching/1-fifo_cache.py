@@ -14,8 +14,7 @@ class FIFOCache(BaseCaching):
         super().__init__()
 
     def put(self, key, item):
-        """Add an item to the cache using FIFO eviction policy.
-
+        """Add an item to cache using FIFO eviction policy.
         Args:
             key (str): Key for the item.
             item (any): Item to store in the cache.
@@ -29,20 +28,11 @@ class FIFOCache(BaseCaching):
 
     def get(self, key):
         """Retrieve an item from the cache.
-
         Args:
             key (str): Key to retrieve.
-
         Returns:
             any: Cached value or None if key doesn't exist.
         """
         if key is None:
             return None
         return self.cache_data.get(key)
-
-    def max(self):
-        """Print the maximum allowed items and current cache size.
-        """
-        print(self.MAX_ITEMS)
-        print(len(self.cache_data))
-
