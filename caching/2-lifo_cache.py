@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """LIFO Caching Code
 """
 from base_caching import BaseCaching
