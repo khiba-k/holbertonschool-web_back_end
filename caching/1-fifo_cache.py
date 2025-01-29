@@ -16,6 +16,7 @@ class FIFOCache(BaseCaching):
 
     def put(self, key, item):
         """Add an item to cache using FIFO eviction policy.
+
         Args:
             key (str): Key for the dictionary item.
             item (any): Item to store in the cache.
@@ -29,8 +30,10 @@ class FIFOCache(BaseCaching):
 
     def get(self, key):
         """Retrieve an item from the cache.
+
         Args:
             key (str): The key of the item to retrieve.
+
         Returns:
             any: Cached value or None if key doesn't exist.
         """
