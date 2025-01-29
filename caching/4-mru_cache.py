@@ -6,7 +6,6 @@ BaseCaching = __import__('base_caching').BaseCaching
 
 class MRUCache(BaseCaching):
     """MRU caching system that inherits from BaseCaching.
-
     Implements a Most Recently Used (MRU) cache replacement policy.
     When the cache reaches its limit, the most recently used entry is discarded.
     """
