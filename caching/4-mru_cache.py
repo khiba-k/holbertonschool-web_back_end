@@ -1,0 +1,49 @@
+#!/usr/bin/env python3
+"""LRU Caching Code
+"""
+from base_caching import BaseCaching
+
+
+class LRUCache(BaseCaching):
+    """LRU caching system that inherits from BaseCaching.
+
+    Implements a Least Recently Used (LRU) cache replacement policy.
+    When the cache reaches its limit, the least recently used entry is discarded.
+    """
+
+    def __init__(self):
+        """Initialize the LRU cache."""
+        super().__init__()
+
+    def put(self, key, item):
+        """Add an item to the cache.
+
+        If the cache exceeds the maximum size, the least recently used item is removed.
+
+        Args:
+            key (str): The key associated with the item.
+            item (any): The item to be stored.
+        """
+        if key is not None and item is not None:
+            if len(self.cache_data) >= self.MAX_ITEMS:
+                last_key = next(reversed(self.cache_data))
+                self.cache_data.pop(last_key)
+                print(f"DISCARD: {last_key}")
+            self.cache_data[key] = item
+
+    def get(self, key):
+        """Retrieve an item from the cache and mark it as recently used.
+
+        Moves the accessed item to the end to indicate recent use.
+
+        Args:
+            key (str): The key of the item to retrieve.
+
+        Returns:
+            any: The item if found, otherwise None.
+        """
+        if key is None or key not in self.cache_data:
+            return None
+        value = self.cache_data.pop(key)
+        self.cache_data = {key : value, **self.cache_data}
+        return value
