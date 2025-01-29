@@ -37,9 +37,4 @@ class LIFOCache(BaseCaching):
             return None
         return self.cache_data.get(key)
 
-    def max(self):
-        """Print the maximum allowed items and current cache size.
-        """
-        print(self.MAX_ITEMS)
-        print(len(self.cache_data))
 
