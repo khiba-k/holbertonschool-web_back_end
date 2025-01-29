@@ -7,8 +7,8 @@ from base_caching import BaseCaching
 class LRUCache(BaseCaching):
     """LRU caching system that inherits from BaseCaching.
 
-    Implements a Least Recently Used (LRU) cache replacement policy.
-    When the cache reaches its limit, the least recently used entry is discarded.
+    Implements(LRU) cache replacement policy.
+    The least recently used entry is discarded.
     """
 
     def __init__(self):
@@ -17,8 +17,8 @@ class LRUCache(BaseCaching):
 
     def put(self, key, item):
         """Add an item to the cache.
-
-        If the cache exceeds the maximum size, the least recently used item is removed.
+        If the cache exceeds the maximum size,
+        the least recently used item is removed.
 
         Args:
             key (str): The key associated with the item.
