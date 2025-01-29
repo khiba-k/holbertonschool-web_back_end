@@ -45,5 +45,5 @@ class MRUCache(BaseCaching):
         if key is None or key not in self.cache_data:
             return None
         value = self.cache_data.pop(key)
-        self.cache_data = {key : value, **self.cache_data}
+        self.cache_data[key] = value
         return value
