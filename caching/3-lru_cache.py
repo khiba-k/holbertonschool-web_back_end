@@ -17,8 +17,7 @@ class LRUCache(BaseCaching):
 
     def put(self, key, item):
         """Add an item to the cache.
-        If the cache exceeds the maximum size,
-        the least recently used item is removed.
+        The least recently used item is removed.
 
         Args:
             key (str): The key associated with the item.
