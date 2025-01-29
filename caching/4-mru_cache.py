@@ -12,17 +12,17 @@ class MRUCache(BaseCaching):
     """
 
     def __init__(self):
-        """Initialize the MRU cache."""
+        """
+        BasicCache class represents a simple caching
+        __init__(): Initializes the BasicCache object.
+        put: Adds an item to the cache.
+        get: Retrieves an item from the cache based on the key.
+        """
         super().__init__()
 
     def put(self, key, item):
         """Add an item to the cache.
-
         If the cache exceeds the maximum size, the least recently used item is removed.
-
-        Args:
-            key (str): The key associated with the item.
-            item (any): The item to be stored.
         """
         if key is not None and item is not None:
             if len(self.cache_data) >= self.MAX_ITEMS:
@@ -33,14 +33,7 @@ class MRUCache(BaseCaching):
 
     def get(self, key):
         """Retrieve an item from the cache and mark it as recently used.
-
         Moves the accessed item to the end to indicate recent use.
-
-        Args:
-            key (str): The key of the item to retrieve.
-
-        Returns:
-            any: The item if found, otherwise None.
         """
         if key is None or key not in self.cache_data:
             return None
