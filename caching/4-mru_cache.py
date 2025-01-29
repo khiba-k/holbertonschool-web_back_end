@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
-"""LRU Caching Code
+"""MRU Caching Code
 """
 from base_caching import BaseCaching
 
 
-class LRUCache(BaseCaching):
-    """LRU caching system that inherits from BaseCaching.
+class MRUCache(BaseCaching):
+    """MRU caching system that inherits from BaseCaching.
 
-    Implements a Least Recently Used (LRU) cache replacement policy.
-    When the cache reaches its limit, the least recently used entry is discarded.
+    Implements a Most Recently Used (MRU) cache replacement policy.
+    When the cache reaches its limit, the most recently used entry is discarded.
     """
 
     def __init__(self):
-        """Initialize the LRU cache."""
+        """Initialize the MRU cache."""
         super().__init__()
 
     def put(self, key, item):
