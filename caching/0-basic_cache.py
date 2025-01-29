@@ -1,6 +1,6 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
-BasicCache module
+this is the main class
 """
 BaseCaching = __import__('base_caching').BaseCaching
 
@@ -12,24 +12,17 @@ class BasicCache(BaseCaching):
     put: Adds an item to the cache.
     get: Retrieves an item from the cache based on the key.
     """
-
     def __init__(self):
-        """
-        Initialize the BasicCache.
-        """
+        """ this is the Initialization function"""
         super().__init__()
 
     def put(self, key, item):
-        """Stores an item in the cache.
+        """
+        add item to the cache
         """
         if key is not None and item is not None:
             self.cache_data[key] = item
 
     def get(self, key):
-        """Retrieves an item from the cache.
-        """
-        
-        if key is None:
-            return None
-        else:
-            return self.cache_data.get(key)
+        """Get an item by key"""
+        return self.cache_data.get(key) if key is not None else None
