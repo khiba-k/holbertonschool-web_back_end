@@ -2,7 +2,7 @@
 """LIFO Caching Code
 """
 from base_caching import BaseCaching
-    
+
 
 class LIFOCache(BaseCaching):
     """LIFO caching system that inherits from BaseCaching.

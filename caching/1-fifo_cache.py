@@ -2,7 +2,7 @@
 """FIFO Caching Code
 """
 BaseCaching = __import__('base_caching').BaseCaching
-    
+
 
 class FIFOCache(BaseCaching):
     """FIFO caching system that inherits from BaseCaching.
