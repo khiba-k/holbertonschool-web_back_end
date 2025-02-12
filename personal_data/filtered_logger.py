@@ -15,7 +15,7 @@ def filter_datum(fields: List[str], redaction: str, message: str, separator: str
         fields (list[str]): List of field names to redact.
         redaction (str): Replacement text for redacted values.
         message (str): The input message containing key-value pairs.
-        separator (str): The separator between key-value pairs (not used in regex).
+        separator (str): The separator between key-value pairs
 
     Returns:
         str: The message with specified fields redacted.
