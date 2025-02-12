@@ -2,13 +2,14 @@
 """
 Task 0: Regex-ing
 
-This module provides a function to obfuscate specific fields in log messages.
+This module provides a function to obfuscate fields in log messages.
 """
 import re
 from typing import List
 
 
-def filter_datum(fields: List[str], redaction: str, message: str, separator: str) -> str:
+def filter_datum(fields: List[str], redaction: str, message: str,
+                 separator: str) -> str:
     """Redacts specified fields in a message.
 
     Args:
