@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 File contains function that obfuscates text
 """
@@ -6,6 +6,7 @@ import re
 
 
 def filter_datum(fields, redaction, message, separator):
+    """Function obfuscates text"""
     for field in fields:
         message = re.sub(f'{field}=[^;]+', f'{field}={redaction}', message)
     return message
