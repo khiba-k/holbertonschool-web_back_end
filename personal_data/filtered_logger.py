@@ -20,6 +20,6 @@ def filter_datum(fields: List[str], redaction: str, message: str, separator: str
     Returns:
         str: The message with specified fields redacted.
     """
-    for field in fields:
-        message = re.sub(rf'{field}=[^;]+', rf'{field}={redaction}', message)
-    return message
+    pattern = (f'({"|".join(map(re.escape, fields))})=[^ {separator}]*')
+    return re.sub(pattern, lambda match: f'{match.group(1)}={redaction}',
+                  message)
