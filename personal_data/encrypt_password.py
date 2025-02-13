@@ -28,4 +28,4 @@ def is_valid(hashed_password: bytes, password: str) -> bool:
     Returns:
         bool: boolean returned, true if match else false
     """
-    return bcrypt.checkpw(password, hashed_password)
+    return bcrypt.checkpw(password.encode(), hashed_password)
