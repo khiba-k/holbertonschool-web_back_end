@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+"""
+Script filters values in incoming log records
+"""
 import logging
 import re
 from typing import List
