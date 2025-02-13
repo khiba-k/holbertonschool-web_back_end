@@ -13,5 +13,5 @@ def hash_password(password: str) -> bytes:
     Returns:
         bytes: The data type of the password after hashing
     """
-    passwrd = bcrypt.hashpw(b'{password}', bcrypt.gensalt())
+    passwrd = bcrypt.hashpw(password, bcrypt.gensalt())
     return passwrd
