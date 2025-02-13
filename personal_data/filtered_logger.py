@@ -5,8 +5,19 @@ Script filters values in incoming log records
 import logging
 import re
 from typing import List, Tuple
+import csv
 
-PII_FIELDS = ("name", "email", "phone", "ssn", "id")
+
+def get_pii_fields_from_csv(csv_file: str) -> tuple:
+    with open(csv_file, "r") as file:
+        csv_file = csv.DictReader(file)
+        pii_fields = [
+            field for field in csv_file.fieldnames if field in
+            ["name", "email", "phone", "ssn", "id"]]
+    return tuple(pii_fields)
+
+
+PII_FIELDS = get_pii_fields_from_csv("user_data.csv")
 
 
 def filter_datum(fields: List[str], redaction: str,
@@ -59,4 +70,3 @@ def get_logger() -> logging.Logger:
     user_data.addHandler(user_data_handler)
 
     return user_data
-
