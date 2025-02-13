@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Script contains function that hashes password
 """
+
 import bcrypt
 
 
