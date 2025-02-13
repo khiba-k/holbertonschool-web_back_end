@@ -47,8 +47,9 @@ def get_logger() -> logging.Logger:
     Returns:
         logging.Logger: instance of a logger object
     """
-    user_data = logging.getLogger(__name__)
+    user_data = logging.getLogger("user_data")
     user_data.setLevel(logging.INFO)
+    user_data.propagate = False
 
     user_data_handler = logging.StreamHandler()
     user_data_handler.setLevel(logging.INFO)
@@ -58,3 +59,4 @@ def get_logger() -> logging.Logger:
     user_data.addHandler(user_data_handler)
 
     return user_data
+
