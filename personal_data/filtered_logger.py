@@ -26,7 +26,7 @@ class RedactingFormatter(logging.Formatter):
     FORMAT = "[HOLBERTON] %(name)s %(levelname)s %(asctime)-15s: %(message)s"
     SEPARATOR = ";"
 
-    def __init__(self, fields: Tuple[str]):
+    def __init__(self, fields: Tuple[str, ...]):
         """
         Initialize the formatter with specific fields to redact.
         """
