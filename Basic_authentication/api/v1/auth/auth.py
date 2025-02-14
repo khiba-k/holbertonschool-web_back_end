@@ -2,6 +2,7 @@
 """Script contains auth template class
 """
 from flask import request
+from typing import List
 
 
 class Auth:
