@@ -4,7 +4,7 @@
 from flask import request
 
 
-class Auth():
+class Auth:
     """Class is a template of the auth system
     """
 
@@ -18,7 +18,7 @@ class Auth():
         """
         return None
 
-    def current_user(self, request=None) -> TypeVar('User'):
+    def current_user(self, request=None) -> None:
         """Current user public method
         """
         return None
