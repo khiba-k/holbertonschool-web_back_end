@@ -9,16 +9,19 @@ class Auth:
     """
 
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
-        """Require auth public method
+        """
+        Require auth public method
         """
         return False
 
     def authorization_header(self, request=None) -> str:
-        """Authorization header public method
+        """
+        Authorization header public method
         """
         return None
 
     def current_user(self, request=None) -> None:
-        """Current user public method
+        """
+        Current user public method
         """
         return None
