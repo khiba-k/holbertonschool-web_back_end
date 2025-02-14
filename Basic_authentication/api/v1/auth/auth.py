@@ -7,14 +7,18 @@ from flask import request
 class Auth:
     """Class is a template of the auth system
     """
-    def __init__(self):
-        pass
 
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
+        """Require auth public method
+        """
         return False
 
     def authorization_header(self, request=None) -> str:
+        """Authorization header public method
+        """
         return None
 
     def current_user(self, request=None) -> TypeVar('User'):
+        """Current user public method
+        """
         return None
