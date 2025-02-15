@@ -45,6 +45,8 @@ if auth_type == "auth":
 
 @app.before_request
 def before_request():
+    """Before request handler
+    """
     if auth is None:
         return None
     excl_paths = ['/api/v1/status/',
