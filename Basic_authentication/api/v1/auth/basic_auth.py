@@ -3,7 +3,7 @@
 """
 from flask import request
 from typing import List
-from api.v1.views import app_views
+from api.v1.auth.auth import Auth
 
 
 class BasicAuth(Auth):
