@@ -14,7 +14,7 @@ app.register_blueprint(app_views)
 CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
 auth = None
-auth_type = getenv(AUTH_TYPE, default=None)
+auth_type = getenv(AUTH_TYPE)
 
 
 @app.errorhandler(404)
@@ -44,7 +44,7 @@ if auth_type == "auth":
 
 
 @app.before_request
-def before_req():
+def before_request():
     if auth is None:
         return None
     excl_paths = ['/api/v1/status/',
