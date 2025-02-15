@@ -11,15 +11,17 @@ class Auth:
 
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """
-        Require auth public method
+        Method checks if endpoint requires auth
         """
+        slashed_path = f'{path}/'
         if path == None:
             return True
         if excluded_paths == None or len(excluded_paths) == 0:
-            return None
-        if excluded_paths[0] == path:
+            return True
+        if path in excluded_paths or slashed_path in excluded_paths:
             return False
-        
+        else:
+            return True
 
     def authorization_header(self, request=None) -> str:
         """
