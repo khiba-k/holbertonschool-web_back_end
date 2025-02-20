@@ -37,5 +37,5 @@ class BasicAuth(Auth):
         try:
             decoded_str = authorization_header.decode(encoding='utf-8')
             return decoded_str
-        except AttributeError:
+        except:
             return None
