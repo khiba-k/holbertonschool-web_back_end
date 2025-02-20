@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Script contains Basic Auth Class that inherits auth class
 """
-from api.v1.auth.auth import Auth
+from auth import Auth
 import base64
 
 
@@ -37,6 +37,7 @@ class BasicAuth(Auth):
             return None
         try:
             decoded_str = base64.b64decode(base64_authorization_header)
-            return decoded_bytes.decode("utf-8")
+            return decoded_str.decode("utf-8")
         except Exception:
             return None
+   
