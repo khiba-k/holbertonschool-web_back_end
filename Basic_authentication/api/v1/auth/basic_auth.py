@@ -23,3 +23,17 @@ class BasicAuth(Auth):
             return None
         split_header = authorization_header.split()
         return split_header[1]
+    
+    def decode_base64_authorization_header(self, base64_authorization_header: str) -> str:
+        """
+        Method decodes authorization credentials
+        """
+        if base64_authorization_header is None:
+            return None
+        if not isinstance(base64_authorization_header, str):
+            return None
+        try:
+            decoded_str = authorization_header.decode(encoding='utf-8')
+            return decoded_str
+        except AttributeError:
+            return None
