@@ -2,7 +2,7 @@
 """Script contains Basic Auth Class that inherits auth class
 """
 from api.v1.auth.auth import Auth
-import base64
+from auth import Auth
 
 
 class BasicAuth(Auth):
@@ -40,3 +40,17 @@ class BasicAuth(Auth):
             return decoded_str.decode("utf-8")
         except Exception:
             return None
+
+    def extract_user_credentials(self,
+                                 decoded_base64_authorization_header: str
+                                 ) -> (str, str):
+        """
+        Method extracts creds from decoded string
+        """
+        if (decoded_base64_authorization_header is None
+            or not isinstance(decoded_base64_authorization_header, str)
+                or ":" not in decoded_base64_authorization_header):
+            return (None, None)
+        colon_rm_creds = decoded_base64_authorization_header.replace(":", " ")
+        split_creds = colon_rm_creds.split()
+        return (split_creds[0], split_creds[1])
