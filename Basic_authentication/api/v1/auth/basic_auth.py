@@ -23,8 +23,10 @@ class BasicAuth(Auth):
             return None
         split_header = authorization_header.split()
         return split_header[1]
-    
-    def decode_base64_authorization_header(self, base64_authorization_header: str) -> str:
+
+    def decode_base64_authorization_header(self,
+                                           base64_authorization_header:
+                                               str) -> str:
         """
         Method decodes authorization credentials
         """
