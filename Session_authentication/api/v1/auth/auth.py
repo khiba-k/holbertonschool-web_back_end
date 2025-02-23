@@ -1,40 +1,43 @@
 #!/usr/bin/env python3
-"""Script contains auth template class
+""" Module of Authentication
 """
 from flask import request
-from typing import List
+from typing import List, TypeVar
+from os import getenv
 
 
 class Auth:
-    """Class is a template of the auth system
-    """
+    """ Class to manage the API authentication """
 
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
-        """
-        Method checks if endpoint requires auth
-        """
-        slashed_path = f'{path}/'
-        if path == None:
+        """ Method for requiring authentication """
+        if path is None or excluded_paths is None or not len(excluded_paths):
             return True
-        if excluded_paths == None or len(excluded_paths) == 0:
-            return True
-        if path in excluded_paths or slashed_path in excluded_paths:
+        # Add slash to all cases for consistency
+        if path[-1] != '/':
+            path += '/'
+        if excluded_paths[-1] != '/':
+            excluded_paths += '/'
+        if path in excluded_paths:
             return False
-        else:
-            return True
+        return True
 
     def authorization_header(self, request=None) -> str:
-        """
-        Authorization header public method
-        """
+        """ Method that handles authorization header """
         if request is None:
             return None
-        if 'Authorization' in request.headers:
-            return request.headers.get("Authorization", None)
+
+        return request.headers.get("Authorization", None)
+
+    def current_user(self, request=None) -> TypeVar('User'):
+        """ Validates current user """
         return None
 
-    def current_user(self, request=None) -> None:
-        """
-        Current user public method
-        """
-        return None
+    def session_cookie(self, request=None):
+        ''' Return cookie value from request. '''
+        if request is None:
+            return None
+
+        cookie_key = getenv('SESSION_NAME')
+
+        return request.cookies.get(cookie_key)
