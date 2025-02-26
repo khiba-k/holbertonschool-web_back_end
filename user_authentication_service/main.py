@@ -7,7 +7,6 @@ from db import DB
 from user import User
 
 my_db = DB()
-print("DB initialized")
 
 user_1 = my_db.add_user("test@test.com", "SuperHashedPwd")
 print(user_1.id)
