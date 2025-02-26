@@ -58,8 +58,8 @@ class DB:
             if user:
                 for key, value in kwargs.items():
                     setattr(user, key, value)
-                self._session.commit()
             return None
 
         except ValueError:
             raise ValueError
+        self._session.commit()
