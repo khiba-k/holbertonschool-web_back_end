@@ -4,6 +4,7 @@ from db import DB
 from user import User
 import bcrypt
 from sqlalchemy.orm.exc import NoResultFound
+from typing import Optional
 import uuid
 
 
@@ -60,7 +61,7 @@ class Auth:
         except NoResultFound:
             return None
 
-    def get_user_from_session_id(self, session_id: str) -> User:
+    def get_user_from_session_id(self, session_id: str) -> Optional[str]:
         """Method gets user object from session id"""
         try:
             if session_id == None:
