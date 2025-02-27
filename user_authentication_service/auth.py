@@ -61,7 +61,7 @@ class Auth:
         except NoResultFound:
             return None
 
-    def get_user_from_session_id(self, session_id: str) -> Optional[str]:
+    def get_user_from_session_id(self, session_id: str) -> Optional[User]:
         """Method gets user object from session id"""
         try:
             if session_id == None:
@@ -70,3 +70,5 @@ class Auth:
             return user
         except NoResultFound:
             return None
+
+    def destroy_session(self, )
