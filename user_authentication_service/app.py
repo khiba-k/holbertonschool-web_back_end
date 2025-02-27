@@ -5,7 +5,7 @@ from sqlalchemy.orm.exc import NoResultFound
 from auth import Auth
 
 
-Auth = Auth()
+AUTH = Auth()
 app = Flask(__name__)
 
 
@@ -22,7 +22,7 @@ def users():
     password = request.form.get("password")
 
     try:
-        user = Auth.register_user(email, password)
+        user = AUTH.register_user(email, password)
         return jsonify({"email": f"{user.email}", "message": "user created"})
     except ValueError:
         return jsonify({"message": "email already registered"})
@@ -33,9 +33,9 @@ def login():
     """Function creates, session_id, logs in, returns cookies"""
     email = request.form.get("email")
     password = request.form.get("password")
-    is_valid = Auth.valid_login(email, password)
+    is_valid = AUTH.valid_login(email, password)
     if is_valid:
-        session_id = Auth.create_session(email)
+        session_id = AUTH.create_session(email)
 
         response = make_response(
             jsonify({"email": f"{email}", "message": "logged in"}))
