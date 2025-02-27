@@ -33,19 +33,16 @@ def login():
     """Function creates, session_id, logs in, returns cookies"""
     email = request.form.get("email")
     password = request.form.get("password")
-    try:
-        is_valid = Auth.valid_login(email, password)
-        if is_valid:
-            session_id = Auth.create_session(email)
+    is_valid = Auth.valid_login(email, password)
+    if is_valid:
+        session_id = Auth.create_session(email)
 
-            response = make_response(
-                jsonify({"email": f"{email}", "message": "logged in"}))
-            response.set_cookie("session_id", session_id)
+        response = make_response(
+            jsonify({"email": f"{email}", "message": "logged in"}))
+        response.set_cookie("session_id", session_id)
 
-            return response
-        else:
-            abort(401)
-    except NoResultFound:
+        return response
+    else:
         abort(401)
 
 
