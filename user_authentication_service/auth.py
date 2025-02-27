@@ -60,7 +60,7 @@ class Auth:
         except NoResultFound:
             return None
 
-    def get_user_from_session_id(self, session_id: str) -> User | None:
+    def get_user_from_session_id(self, session_id: str) -> User:
         """Method gets user object from session id"""
         try:
             if session_id == None:
