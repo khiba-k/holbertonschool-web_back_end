@@ -75,3 +75,11 @@ class Auth:
         """Method sets session id to none"""
         self._db.update_user(user_id, session_id=None)
         return None
+
+    def get_reset_password_token(self, email: str) -> str:
+        """Method generates a reset password token"""
+        try:
+            user = self._db.find_user_by(email=email)
+            return _generate_uuid()
+        except NoResultFound:
+            raise ValueError
