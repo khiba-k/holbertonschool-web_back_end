@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Script contains flask app"""
-from flask import Flask, jsonify, request, make_response, abort, flask
+from flask import Flask, jsonify, request, make_response, abort, redirect
 from sqlalchemy.orm.exc import NoResultFound
 from auth import Auth
 
@@ -55,7 +55,7 @@ def logout():
         session = AUTH.destroy_session(user.id)
         if session is None:
             return redirect("/")
-    except NoResultFound:
+    except (NoResultFound, AttributeError):
         abort(403)
 
 
