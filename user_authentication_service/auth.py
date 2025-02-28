@@ -86,7 +86,7 @@ class Auth:
         except NoResultFound:
             raise ValueError
 
-    def update_password(reset_token: str, password: str) -> None:
+    def update_password(self, reset_token: str, password: str) -> None:
         """Method updates user password"""
         try:
             user = self._db.find_user_by(reset_token=reset_token)
@@ -94,5 +94,5 @@ class Auth:
             return update_user(user.id,
                                hashed_password=hashed_pass,
                                reset_token=None)
-        except NoResultFound:
+        except (NoResultFound, ValueError):
             raise ValueError
