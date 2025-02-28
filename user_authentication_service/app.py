@@ -52,8 +52,9 @@ def logout():
     try:
         session_id = request.cookies.get("session_id")
         user = AUTH.get_user_from_session_id(session_id)
-        AUTH.destroy_session(user.id)
-        return redirect("/")
+        session = AUTH.destroy_session(user.id)
+        if session is None:
+            return redirect("/")
     except NoResultFound:
         abort(403)
 
