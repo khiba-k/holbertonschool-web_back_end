@@ -39,10 +39,17 @@ class TestGithubOrgClient(unittest.TestCase):
 
         self.assertEqual(result,  "https://api.github.com/orgs/google/repos")
 
+    @parameterized.expand([
+        ([
+            {"name": "repo1", "license": {"key": "mit"}},
+            {"name": "repo2", "license": {"key": "apache-2.0"}},
+            {"name": "repo3", "license": None},
+        ], ["repo1", "repo2", "repo3"])
+    ])
     @patch("client.get_json")
-    def test_public_repos(self, mock_get_json: Mock) -> None:
-        """"""
-        mock_get_json.return_value = {"payload": "info"}
+    def test_public_repos(self, payload, expected, mock_get_json: Mock) -> None:
+        """Method tests """
+        mock_get_json.return_value = payload
 
         with patch.object(GithubOrgClient, "_public_repos_url",
                           new_callable=PropertyMock) as mock_public:
@@ -51,8 +58,8 @@ class TestGithubOrgClient(unittest.TestCase):
 
             client_inst = GithubOrgClient("google")
 
-            result = client_inst.repos_payload
+            result = client_inst.public_repos()
 
-            self.assertEqual(result, {"payload": "info"})
+            self.assertEqual(result, expected)
             mock_get_json.assert_called_once_with(
                 "https://api.github.com/orgs/google/repos")
