@@ -5,6 +5,10 @@ import client
 from client import GithubOrgClient
 from parameterized import parameterized
 from unittest.mock import Mock, patch, PropertyMock
+from typing import (
+    List,
+    Dict,
+)
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -48,7 +52,7 @@ class TestGithubOrgClient(unittest.TestCase):
     ])
     @patch("client.get_json")
     def test_public_repos(self, payload, expected, mock_get_json: Mock) -> None:
-        """Method tests """
+        """Method tests public)repos method"""
         mock_get_json.return_value = payload
 
         with patch.object(GithubOrgClient, "_public_repos_url",
@@ -63,3 +67,14 @@ class TestGithubOrgClient(unittest.TestCase):
             self.assertEqual(result, expected)
             mock_get_json.assert_called_once_with(
                 "https://api.github.com/orgs/google/repos")
+
+    @parameterized.expand([
+        ({"license": {"key": "my_license"}}, "my_license", True),
+        ({"license": {"key": "other_license"}}, "my_license", False)
+    ])
+    def test_has_license(self, repo: Dict[str, Dict],
+                         license_key: str, expected: bool):
+        """Method tests has_license static method"""
+        result = GithubOrgClient.has_license(repo, license_key)
+
+        self.assertEqual(result, expected)
