@@ -29,24 +29,29 @@ The repository is organized into different directories, each containing projects
 
 ```
 holbertonschool-web_back_end/
-├── python/
-│   ├── project1/
-│   └── project2/
-├── javascript/
-│   ├── project1/
-│   └── project2/
-├── flask/
-│   ├── project1/
-│   └── project2/
-├── express/
-│   ├── project1/
-│   └── project2/
-├── nodejs/
-│   ├── project1/
-│   └── project2/
-└── unittest/
-    ├── project1/
-    └── project2/
+├── 0x0B_redis_basic/
+│   ├── README.md
+│   ├── __pycache__/
+│   ├── exercise.py
+│   └── main.py
+├── Basic_authentication/
+├── ES6_basic/
+├── ES6_classes/
+├── ES6_data_manipulation/
+├── ES6_promise/
+├── NoSQL/
+├── Node_JS_basic/
+├── Unittests_and_integration_tests/
+├── api/
+├── caching/
+├── i18n/
+├── models/
+├── pagination/
+├── personal_data/
+├── python_async_comprehension/
+├── python_async_function/
+├── python_variable_annotations/
+└── user_authentication_service/
 ```
 
 ## Setup
