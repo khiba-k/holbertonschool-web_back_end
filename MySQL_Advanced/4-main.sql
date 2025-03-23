@@ -1,5 +1,4 @@
--- Script creates trigger that decreases
--- the quantity of an item after adding new order
+
 SELECT * FROM items;
 SELECT * FROM orders;
 
