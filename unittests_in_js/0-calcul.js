@@ -1,5 +1,7 @@
-function calculateNumber(a, b) {
-  return Math.round(a) + Math.round(b);
-}
+module.exports = function calculateNumber(a = 0, b = 0) {
+  if (isNaN(a) || isNaN(b)) {
+    throw new TypeError();
+  }
 
-module.exports = calculateNumber;
+  return Math.round(a) + Math.round(b);
+};
