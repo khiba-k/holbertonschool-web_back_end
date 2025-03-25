@@ -2,51 +2,43 @@ const calculateNumber = require("./0-calcul");
 const assert = require("assert");
 
 describe("calculateNumber", function () {
-  it("Should return 4", function () {
-    let a = 1,
-      b = 3;
-    let result = 4;
-
-    assert.equal(calculateNumber(a, b), result);
+  it("Should round 2 to the nearest integer and add to 5", function () {
+    assert.equal(calculateNumber(2, 5), 7);
   });
 
-  it("Should return 5", function () {
-    let a = 1,
-      b = 3.7;
-    let result = 5;
-
-    assert.equal(calculateNumber(a, b), result);
+  it("Should add 2 to 0 when 2 is already an integer", function () {
+    assert.equal(calculateNumber(2, 0), 2);
   });
 
-  it("Should return 5", function () {
-    let a = 1.2,
-      b = 3.7;
-    let result = 5;
-
-    assert.equal(calculateNumber(a, b), result);
+  it("Should round 2.7 to 3 and add to 5", function () {
+    assert.equal(calculateNumber(2.7, 5), 8);
   });
 
-  it("Should return 6", function () {
-    let a = 1.5,
-      b = 3.7;
-    let result = 6;
-
-    assert.equal(calculateNumber(a, b), result);
+  it("Should round 2.5 to 3 and add to 5.7", function () {
+    assert.equal(calculateNumber(2.5, 5.7), 9);
   });
 
-  it("Should return 3", function () {
-    let a = -1.5,
-      b = 3.7;
-    let result = 3;
-
-    assert.equal(calculateNumber(a, b), result);
+  it("Should round 3 to the nearest integer and add to -5", function () {
+    assert.equal(calculateNumber(3, -5), -2);
   });
 
-  it("Should return 6", function () {
-    let a = 1.57,
-      b = 3.7;
-    let result = 6;
+  it("Should round -3 to the nearest integer and add to 5", function () {
+    assert.equal(calculateNumber(-3, 5), 2);
+  });
 
-    assert.equal(calculateNumber(a, b), result);
+  it("Should round -3.7 to -4 and add to 5", function () {
+    assert.equal(calculateNumber(-3.7, 5), 1);
+  });
+
+  it("Should round 3.7 to 4 and add to -5", function () {
+    assert.equal(calculateNumber(3.7, -5), -1);
+  });
+
+  it("Should round -3.2 to -3 and add to 5", function () {
+    assert.equal(calculateNumber(-3.2, 5), 2);
+  });
+
+  it("Should round 3.2 to 3 and add to -5", function () {
+    assert.equal(calculateNumber(3.2, -5), -2);
   });
 });
