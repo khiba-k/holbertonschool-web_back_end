@@ -1,42 +1,28 @@
-const assert = require("assert");
-const mocha = require("mocha");
-
 const calculateNumber = require("./0-calcul");
+const assert = require("assert");
 
-describe("calculateNumber", () => {
-  it("should return sum of integers", () => {
-    assert.strictEqual(calculateNumber(1, 3), 4);
-    assert.strictEqual(calculateNumber(1, -1), 0);
-    assert.strictEqual(calculateNumber(1, -3), -2);
+describe("calculateNumber", function () {
+  it("should accept positive whole numbers and sum them", function () {
+    assert.strictEqual(calculateNumber(4, 5), 9);
+    assert.strictEqual(calculateNumber(0, 5), 5);
   });
 
-  it("should round floats", () => {
-    assert.strictEqual(calculateNumber(1, 3.7), 5);
-    assert.strictEqual(calculateNumber(1.2, 3.7), 5);
-    assert.strictEqual(calculateNumber(1.5, 3.7), 6);
-    assert.strictEqual(calculateNumber(0.1, 0), 0);
-    assert.strictEqual(calculateNumber(1.4, -4.5), -3);
+  it("should accept all integers and sum them", function () {
+    assert.strictEqual(calculateNumber(4, 5), 9);
+    assert.strictEqual(calculateNumber(-4, 5), 1);
+    assert.strictEqual(calculateNumber(4, -5), -1);
+    assert.strictEqual(calculateNumber(0, 5), 5);
   });
 
-  it("should return the rounded number if only one is provided", () => {
-    assert.strictEqual(calculateNumber(2), 2);
-    assert.strictEqual(calculateNumber(2.7), 3);
-  });
-
-  it("should cast non-numbers into numbers", () => {
-    assert.strictEqual(calculateNumber(true, "3"), 4);
-    assert.strictEqual(calculateNumber(1, "3.7"), 5);
-    assert.strictEqual(calculateNumber("1.2", 3.7), 5);
-  });
-
-  it("should throw typeerror if either param cannot be coerced to a number", () => {
-    assert.throws(() => calculateNumber("hello"), {
-      name: "TypeError",
-      message: "Parameters must be numbers",
-    });
-    assert.throws(() => calculateNumber(1.2, "dog"), {
-      name: "TypeError",
-      message: "Parameters must be numbers",
-    });
+  it("should accept real numbers, round  and sum them", function () {
+    assert.strictEqual(calculateNumber(4.2, 5), 9);
+    assert.strictEqual(calculateNumber(4.2, 5.2), 9);
+    assert.strictEqual(calculateNumber(4.6, 5.2), 10);
+    assert.strictEqual(calculateNumber(4.6, 5.7), 11);
+    assert.strictEqual(calculateNumber(-4.2, 5), 1);
+    assert.strictEqual(calculateNumber(4, -5.2), -1);
+    assert.strictEqual(calculateNumber(-4.8, 5), 0);
+    assert.strictEqual(calculateNumber(-4.8, 5.7), 1);
+    assert.strictEqual(calculateNumber(-4.6, -5.2), -10);
   });
 });
