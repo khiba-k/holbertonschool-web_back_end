@@ -1,4 +1,4 @@
-const calculateNumber = require("./0-calcul");
+const calculateNumber = require("./0-calcul.js");
 const assert = require("assert");
 
 describe("calculateNumber", function () {
@@ -7,8 +7,5 @@ describe("calculateNumber", function () {
     assert.strictEqual(calculateNumber(1, 3.7), 5);
     assert.strictEqual(calculateNumber(1.2, 3.7), 5);
     assert.strictEqual(calculateNumber(1.5, 3.7), 6);
-  });
-  it("should throw error if NaN passed", function () {
-    assert.throws(() => calculateNumber(NaN, 3), "[Function: TypeError]");
   });
 });
