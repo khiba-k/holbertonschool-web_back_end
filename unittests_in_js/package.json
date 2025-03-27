@@ -4,12 +4,12 @@
   "description": "## Project Overview",
   "main": "index.js",
   "scripts": {
-    "test": "mocha **/*.test.js"
+    "test": "mocha"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "mocha": "^11.1.0"
+    "mocha": "^10.8.2"
   }
 }
