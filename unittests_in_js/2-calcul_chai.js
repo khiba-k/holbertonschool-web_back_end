@@ -13,4 +13,5 @@ function calculateNumber(type, a, b) {
 
   return result == Infinity ? "Error" : result;
 }
-export default calculateNumber;
+
+module.exports = calculateNumber;
