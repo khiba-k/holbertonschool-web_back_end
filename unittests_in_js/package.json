@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "## Project Overview",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "mocha"
   },
@@ -11,5 +12,8 @@
   "license": "ISC",
   "devDependencies": {
     "mocha": "^10.8.2"
+  },
+  "dependencies": {
+    "chai": "^5.2.0"
   }
 }
