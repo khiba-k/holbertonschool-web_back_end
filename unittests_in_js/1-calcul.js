@@ -11,6 +11,6 @@ function calculateNumber(type, a, b) {
     result = Math.round(a) / Math.round(b);
   }
 
-  return result;
+  return result == Infinity ? "Error" : result;
 }
 module.exports = calculateNumber;
