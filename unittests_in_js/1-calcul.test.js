@@ -39,5 +39,6 @@ describe("calculateNumber()", function () {
     assert.strictEqual(calculateNumber("DIVIDE", 15.8, 4.2), 4);
     assert.strictEqual(calculateNumber("DIVIDE", 15.8, -4.2), -4);
     assert.strictEqual(calculateNumber("DIVIDE", -15.8, -4.2), 4);
+    assert.strictEqual(calculateNumber("DIVIDE", 15.8, 0), "Error");
   });
 });
