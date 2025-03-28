@@ -29,5 +29,7 @@ describe("sendPaymentRequestToApi", function () {
 
     // Check that console log returns correct message
     sinon.assert.calledWith(consoleSpy, "The total is: 120");
+
+    consoleSpy.restore;
   });
 });
