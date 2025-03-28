@@ -4,17 +4,30 @@ const sendPaymentRequestToApi = require("./3-payment.js");
 const Utils = require("./utils");
 
 describe("sendPaymentRequestToApi", function () {
-  it("calculateNumber Method should be called once", function () {
-    const utils = new Utils();
-    const spy = sinon.spy(utils, "calculateNumber");
+  it("calculateNumber is called once", function () {
+    // Spy on calculateNumber method and console log
+    const spy = sinon.spy(Utils.prototype, "calculateNumber");
 
-    const calculateNum = utils.calculateNumber("SUM", 100, 20);
-    const sendPaymentReq = sendPaymentRequestToApi(100, 20);
+    // Call sendPayment function
+    sendPaymentRequestToApi(100, 20);
 
-    expect(sendPaymentReq).to.equal(calculateNum);
+    // Check that the method is called once with correct args
     sinon.assert.calledOnce(spy);
     sinon.assert.calledWith(spy, "SUM", 100, 20);
 
     spy.restore();
+  });
+
+  it("console.log gets result from CalculateNumber", function () {
+    const utils = new Utils();
+
+    // Spy on console log
+    const consoleSpy = sinon.spy(console, "log");
+
+    // Call send Payment function
+    sendPaymentRequestToApi(100, 20);
+
+    // Check that console log returns correct message
+    sinon.assert.calledWith(consoleSpy, "The total is: 120");
   });
 });
