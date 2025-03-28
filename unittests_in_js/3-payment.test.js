@@ -1,5 +1,20 @@
 const sinon = require("sinon");
-const Utils = require("./utils.js");
-function sendPaymentRequestToApi() {}
+const expect = require("chai").expect;
+const sendPaymentRequestToApi = require("./3-payment.js");
+const Utils = require("./utils");
 
-describe("sendPaymentRequestToApi", function () {});
+describe("sendPaymentRequestToApi", function () {
+  it("the method and function should return the same value", function () {
+    const utils = new Utils();
+    const spy = sinon.spy(utils, "calculateNumber");
+
+    const calculateNum = utils.calculateNumber("SUM", 100, 20);
+    const sendPaymentReq = sendPaymentRequestToApi(100, 20);
+
+    expect(sendPaymentReq).to.equal(calculateNum);
+    sinon.assert.calledOnce(spy);
+    sinon.assert.calledWith(spy, "SUM", 100, 20);
+
+    spy.restore();
+  });
+});
