@@ -4,7 +4,7 @@ const sendPaymentRequestToApi = require("./3-payment.js");
 const Utils = require("./utils");
 
 describe("sendPaymentRequestToApi", function () {
-  it("the method and function should return the same value", function () {
+  it("calculateNumber Method should be called once", function () {
     const utils = new Utils();
     const spy = sinon.spy(utils, "calculateNumber");
 
