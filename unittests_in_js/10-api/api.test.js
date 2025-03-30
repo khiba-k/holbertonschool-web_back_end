@@ -44,4 +44,16 @@ describe("Index page", function () {
       }
     );
   });
+
+  it("/available_payments returns correct value", function (done) {
+    request.get(
+      `http://localhost:7865//available_payments`,
+      function (error, response, body) {
+        expect(response.body).to.deep.equal({
+          payment_methods: { credit_cards: true, paypal: false },
+        });
+        done();
+      }
+    );
+  });
 });
