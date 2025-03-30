@@ -47,11 +47,22 @@ describe("Index page", function () {
 
   it("/available_payments returns correct value", function (done) {
     request.get(
-      `http://localhost:7865//available_payments`,
+      `http://localhost:7865/available_payments`,
       function (error, response, body) {
-        expect(response.body).to.deep.equal({
+        expect(JSON.parse(body)).to.deep.equal({
           payment_methods: { credit_cards: true, paypal: false },
         });
+        done();
+      }
+    );
+  });
+
+  it("/login returns correct value", function (done) {
+    request.post(
+      `http://localhost:7865/login`,
+      { json: { userName: "Betty" } },
+      function (error, response, body) {
+        expect(body).to.equal("Welcome Betty");
         done();
       }
     );
